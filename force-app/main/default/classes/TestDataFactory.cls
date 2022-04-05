@@ -122,7 +122,6 @@ public with sharing class TestDataFactory {
         for (Integer i = 0; i < cnt; i++) {
             Order ord = new Order();
 
-            // ord.Name            = 'Unique Name ' + i;
             ord.EffectiveDate   = Date.today() + i;
             ord.AccountId       = accts[Math.mod(i, size)].Id;
             ord.Pricebook2Id    = Constants.STANDARD_PRICEBOOK_ID;
@@ -130,7 +129,6 @@ public with sharing class TestDataFactory {
 
             orderList.add(ord);
         }
-
         return orderList;
     }
 
@@ -189,4 +187,7 @@ public with sharing class TestDataFactory {
         insert ordItem;
     }
 
+    public static void VerifyQuantityOrdered(Product2 originalProduct, Product2 updatedProduct, Integer qtyOrdered) {
+        System.assertEquals(originalProduct.Quantity_Ordered__c.intValue() + qtyOrdered, updatedProduct.Quantity_Ordered__c.intValue());
+    }
 }

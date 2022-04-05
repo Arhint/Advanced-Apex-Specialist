@@ -30,7 +30,7 @@ public class Constants {
 
     //An Id used to create Orders and PricebookEntries in business and test code.
     //Test.getStandardPricebookId(); //'01s7Q000009H1BdQAK';
-    public static final Id STANDARD_PRICEBOOK_ID = [SELECT Id FROM Pricebook2 WHERE IsStandard = true LIMIT 1].Id;
+    public static final Id STANDARD_PRICEBOOK_ID = '01s7Q000009H1BdQAK'; //[SELECT Id FROM Pricebook2 WHERE IsStandard = true LIMIT 1].Id;
 
     public Constants() {
 
