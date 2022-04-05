@@ -7,7 +7,9 @@ public class AnnouncementQueueable {
     public List<ConnectApi.AnnouncementInput> toPost;
 
     //ToDo: Modify this class to implement the Queueable interface and call the postAnnouncements method
-
+    public void execute(QueueableContext context) {
+        PostAnnouncements(toPost);
+    }
 
     /**
      * @name postAnnouncements
@@ -27,6 +29,7 @@ public class AnnouncementQueueable {
             q.toPost = announcements;
 
             //ToDo: Enqueue the above instance of announcementQueueable
+            System.enqueueJob(q);
         }
     }
 

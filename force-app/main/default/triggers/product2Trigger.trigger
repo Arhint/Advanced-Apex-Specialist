@@ -29,5 +29,6 @@ trigger product2Trigger on Product2 (
         }
     } catch ( Exception e ){
         //A good developer would do something with this Exception!
+        System.debug(e.getMessage());
     }
 }
