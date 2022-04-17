@@ -36,6 +36,8 @@ private class Product2Tests {
                 ext.productsToInsert.get(i).pricebookEntryRecord = pbe;
             }
             ext.save();
+            ext.GetFamilyOptions();
+            ext.GetInventory();
 
             List<Product2> newProdsList = [SELECT Id FROM Product2];
             System.assertEquals(Constants.DEFAULT_ROWS, newProdsList.size());
@@ -43,4 +45,28 @@ private class Product2Tests {
         Test.stopTest();
     }
 
+    @isTest
+    static void Product2Trigger_UnitTest() {
+
+        Test.startTest();
+        Product2 prod = new Product2();
+        prod.Name = 'TestProduct';
+        prod.Family = 'Side';
+        prod.IsActive = true;
+        prod.Quantity_Ordered__c = 2;
+        prod.Initial_Inventory__c = 33;
+        insert prod;
+
+        CollaborationGroup c = new CollaborationGroup();
+        c.Name = 'TEST' + Constants.INVENTORY_ANNOUNCEMENTS;
+        c.Description = 'test';
+        c.CollaborationType = 'Public';
+        insert c;
+
+        prod.Quantity_Ordered__c=3;
+        update prod;
+        Test.stopTest();
+    }
+
 }
+

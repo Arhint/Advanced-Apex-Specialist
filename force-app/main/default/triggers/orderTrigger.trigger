@@ -2,16 +2,11 @@
  * @name orderTrigger
  * @description
 **/
-trigger orderTrigger on Order (
-    before insert, after insert
-    ,before update, after update
-    ,before delete, after delete
-    ,after undelete
-) {
-    try {
+trigger orderTrigger on Order (after update) {
+    // try {
         OrderHelper.AfterUpdate(Trigger.New, Trigger.Old);
         
-    }catch ( Exception e ){
+    // }catch ( Exception e ){
     
-    }
+    // }
 }

@@ -19,7 +19,7 @@ public class Product2Extension {
 
     public PageReference Save(){
 
-        Savepoint sp = Database.setSavepoint();
+        System.Savepoint sp = Database.setSavepoint();
 
         try {
 
@@ -75,8 +75,8 @@ public class Product2Extension {
         public PricebookEntry pricebookEntryRecord {get; set;}
 
         public ProductWrapper() {
-            productRecord = new Product2(Initial_Inventory__c = 0);
-            pricebookEntryRecord = new PricebookEntry();
+            productRecord = new Product2(Initial_Inventory__c =0, Name='Test Product', isActive=true);
+            pricebookEntryRecord = new PricebookEntry(Unitprice=0.0);
         }
     }
 }
